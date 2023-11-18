@@ -12,7 +12,7 @@ import pyrebase
 # Defining Flask App
 app = Flask(__name__)
 
-nimgs = 50
+nimgs = 25
 
 
 # firebaseConfig = {

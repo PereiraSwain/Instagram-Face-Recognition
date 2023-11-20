@@ -2,11 +2,11 @@ import cv2
 import os
 from flask import Flask, request, render_template, redirect
 import numpy as np
-from sklearn.neighbors import KNeighborsClassifier
+
 from sklearn.ensemble import RandomForestClassifier
-import pandas as pd
+
 import joblib
-import pyrebase
+
 
 
 # Defining Flask App

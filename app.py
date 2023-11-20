@@ -16,15 +16,16 @@ nimgs = 25
 
 
 # firebaseConfig = {
-#     "apiKey": "AIzaSyBaZjDU5gQMS87A-zD5SY9LRW9xSa2gxXM",
-#     "authDomain": "face-recognition-54b3e.firebaseapp.com",
-#     "databaseURL": "https://face-recognition-54b3e-default-rtdb.firebaseio.com",
-#     "projectId": "face-recognition-54b3e",
-#     "storageBucket": "face-recognition-54b3e.appspot.com",
-#     "messagingSenderId": "743554111064",
-#     "appId": "1:743554111064:web:20a4fb64a4653dda1cdc2d",
-#     "measurementId": "G-JMK2E6Q6CJ"
+#     'apiKey': "AIzaSyAZe4nIe5J4gnZkCg2Nq8H0UIjn8GBUm_E",
+#     'authDomain': "instagram-face-recognition.firebaseapp.com",
+#     'databaseURL': 'https://instagram-face-recognition.firebaseio.com',
+#     'projectId': "instagram-face-recognition",
+#     'storageBucket': "instagram-face-recognition.appspot.com",
+#     'messagingSenderId': "646845225022",
+#     'appId': "1:646845225022:web:d9c8d441853b002bf0996f",
+#     'measurementId': "G-NRVKVTH69M"
 #   }
+#
 # firebase=pyrebase.initialize_app(firebaseConfig)
 # storage=firebase.storage()
 
@@ -36,16 +37,18 @@ face_detector = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
 
 # If these directories don't exist, create them//////
-
+# list_img=['img1.jpg','img2.jpg']
+# for i in range(len(list_img)):
+#     print(list_img[i])
+#     storage.child(f'static/faces/img{i}').put(list_img[i])
 if not os.path.isdir('static'):
     os.makedirs('static')
 if not os.path.isdir('static/faces'):
     os.makedirs('static/faces')
 
 
-
 # get a number of total registered users//////
-def totalreg():
+def totalreg ():
     return len(os.listdir('static/faces'))
 
 

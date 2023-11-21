@@ -69,34 +69,6 @@ def train_model():
 
 
 
-
-
-# ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-## A function to get names and rol numbers of all users
-def getallusers():
-    userlist = os.listdir('static/faces')
-    names = []
-    rolls = []
-    l = len(userlist)
-
-    for i in userlist:
-        name, roll = i.split('_')
-        names.append(name)
-        rolls.append(roll)
-
-    return userlist, names, rolls, l
-
-
-## A function to delete a user folder
-def deletefolder(duser):
-    pics = os.listdir(duser)
-    for i in pics:
-        os.remove(duser+'/'+i)
-    os.rmdir(duser)
-
-
 # ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ################## ROUTING FUNCTIONS #########################
@@ -106,6 +78,7 @@ def deletefolder(duser):
 def home():
     # names, rolls, times, l = extract_attendance()
     return render_template('home.html', totalreg=totalreg())
+
 
 
 # Our main Face Recognition functionality.

@@ -2,11 +2,11 @@ import cv2
 import os
 from flask import Flask, request, render_template, redirect
 import numpy as np
-from sklearn.neighbors import KNeighborsClassifier
+# from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import RandomForestClassifier
-import pandas as pd
+# import pandas as pd
 import joblib
-import pyrebase
+
 
 
 # Defining Flask App
@@ -15,32 +15,12 @@ app = Flask(__name__)
 nimgs = 25
 
 
-# firebaseConfig = {
-#     'apiKey': "AIzaSyAZe4nIe5J4gnZkCg2Nq8H0UIjn8GBUm_E",
-#     'authDomain': "instagram-face-recognition.firebaseapp.com",
-#     'databaseURL': 'https://instagram-face-recognition.firebaseio.com',
-#     'projectId': "instagram-face-recognition",
-#     'storageBucket': "instagram-face-recognition.appspot.com",
-#     'messagingSenderId': "646845225022",
-#     'appId': "1:646845225022:web:d9c8d441853b002bf0996f",
-#     'measurementId': "G-NRVKVTH69M"
-#   }
-#
-# firebase=pyrebase.initialize_app(firebaseConfig)
-# storage=firebase.storage()
-
-
-
-
 # Initializing VideoCapture object to access WebCam
 face_detector = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
 
 # If these directories don't exist, create them//////
-# list_img=['img1.jpg','img2.jpg']
-# for i in range(len(list_img)):
-#     print(list_img[i])
-#     storage.child(f'static/faces/img{i}').put(list_img[i])
+
 if not os.path.isdir('static'):
     os.makedirs('static')
 if not os.path.isdir('static/faces'):
@@ -162,10 +142,9 @@ def start():
     # names, rolls, times, l = extract_attendance()
 
     if 'face_recognition_model.pkl' not in os.listdir('static'):
-        return render_template('home.html', mess='There is no trained model in the static folder.Please add a new face '
+        return render_template('home.html', mess='There is no trained model in the Database.Please add a new face '
                                                 'to continue.', totalreg=totalreg())
-        # (, names=names, rolls=rolls, times=times, l=l, totalreg=totalreg(), datetoday2=datetoday2, mess='There is no
-        # trained model in the static folder. Please add a new face to continue.')
+
 
     ret = True
     cap = cv2.VideoCapture(0)
@@ -177,7 +156,6 @@ def start():
             cv2.rectangle(frame, (x, y), (x+w, y-40), (86, 32, 251), -1)
             face = cv2.resize(frame[y:y+h, x:x+w], (50, 50))
             identified_person = identify_face(face.reshape(1, -1))[0]
-            # add_attendance(identified_person)
             cv2.putText(frame, f'{identified_person}', (x+5, y-5),
                         cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
         cv2.imshow('insta', frame)
@@ -190,7 +168,7 @@ def start():
 
     return redirect(f"https://www.instagram.com/{username}/", code=302)
 
-    # (, names=names, rolls=rolls, times=times, l=l, totalreg=totalreg(), datetoday2=datetoday2)
+
 
 
 # A function to add a new user.
@@ -228,7 +206,7 @@ def add():
     train_model()
     # names, rolls, times, l = extract_attendance()
     return render_template('home.html',totalreg=totalreg())
-    # (, names=names, rolls=rolls, times=times, l=l, totalreg=totalreg(), datetoday2=datetoday2)
+
 
 
 # Our main function which runs the Flask App

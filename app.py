@@ -106,33 +106,6 @@ def deletefolder(duser):
 def home():
     # names, rolls, times, l = extract_attendance()
     return render_template('home.html', totalreg=totalreg())
-    # (, names=names, rolls=rolls, times=times, l=l, totalreg=totalreg(), datetoday2=datetoday2)
-
-
-## List users page
-# @app.route('/listusers')
-# def listusers():
-#     userlist, names, rolls, l = getallusers()
-#     return render_template('listusers.html', userlist=userlist, names=names, rolls=rolls, l=l, totalreg=totalreg(), datetoday2=datetoday2)
-
-
-## Delete functionality
-# @app.route('/deleteuser', methods=['GET'])
-# def deleteuser():
-#     duser = request.args.get('user')
-#     deletefolder('static/faces/'+duser)
-#
-#     ## if all the face are deleted, delete the trained file...
-#     if os.listdir('static/faces/')==[]:
-#         os.remove('static/face_recognition_model.pkl')
-#
-#     try:
-#         train_model()
-#     except:
-#         pass
-#
-#     userlist, names, rolls, l = getallusers()
-#     return render_template('listusers.html', userlist=userlist, names=names, rolls=rolls, l=l, totalreg=totalreg(), datetoday2=datetoday2)
 
 
 # Our main Face Recognition functionality.

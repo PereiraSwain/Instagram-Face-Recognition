@@ -7,5 +7,8 @@ instagram account you need to press **"q"** from the keyoard.
 
 # Preview
 Its a simple webapp using Flask.
-![image](https://github.com/jAsOnN07/Instagram-Face-Recognition/assets/90206616/c0829fa0-6fe3-4839-b4bb-18b22f016bc1)
+![image](https://github.com/jAsOnN07/Instagram-Face-Recognition/assets/90206616/72d7fba0-e89c-4b3f-9e64-f561e004e7d9)
+
+
+
 
